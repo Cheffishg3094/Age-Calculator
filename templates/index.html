@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Age Calculator</title>
+  <link rel="icon" href="assets/images/population.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/images/population.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(https://www.bluechippartners.com/wp-content/uploads/2021/08/The-Power-Of-Compound-Interest-1200x675.jpg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    form {
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+
+    */ p {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      /* background-color: #f2f2f2; */
+      padding: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Age Calculator</h1>
+  </header>
+
+
+  {% if now %}
+  <p>{{ now.strftime("%B %d, %Y") }}</p>
+  {% endif %}
+
+  {% if answer %}
+  <p>{{ answer }}</p>
+  {% endif %}
+
+  <hr>
+
+  {% if people %}
+  <h2>Previous Data:</h2>
+  <ul>
+    {% for person in people %}
+    <li>
+      {{ person.name }} - {{ person.age()[0] }} years, {{ person.age()[1] }} months, {{ person.age()[2] }} days old
+    </li>
+    {% endfor %}
+    <form method="POST" action="/clear">
+      <button type="submit" class="btn">Clear data</button>
+    </form>
+  </ul>
+  {% endif %}
+
+  <h2>Enter Your Birthdate:</h2>
+  <form method="POST" action="/">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="day">Birth Day:</label>
+    <input type="number" id="day" name="day" min="1" max="31" required>
+
+    <label for="month">Birth Month:</label>
+    <input type="number" id="month" name="month" min="1" max="12" required>
+
+    <label for="year">Birth Year:</label>
+    <input type="number" id="year" name="year" min="1900" max="{{ now.year }}" required>
+
+    <button type="submit">Calculate Age</button>
+  </form>
+  <footer>
+    <p> Copyright &copy; 2023 Cheffish Goyal, All Rights Reserved</p>
+  </footer>
+</body>
+
+</html>
