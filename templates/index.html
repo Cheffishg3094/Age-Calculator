@@ -3,8 +3,12 @@
 
 <head>
   <title>Age Calculator</title>
-  <link rel="icon" href="https://raw.githubusercontent.com/Cheffishg3094/Age-Calculator/main/templates/assets/images/population.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/Cheffishg3094/Age-Calculator/main/templates/assets/images/population.ico" type="image/x-icon">
+  <link rel="icon"
+    href="https://raw.githubusercontent.com/Cheffishg3094/Age-Calculator/main/templates/assets/images/population.ico"
+    type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://raw.githubusercontent.com/Cheffishg3094/Age-Calculator/main/templates/assets/images/population.ico"
+    type="image/x-icon">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -62,10 +66,30 @@
       background-color: #3e8e41;
     }
 
+
     */ p {
       text-align: center;
       margin-top: 20px;
       font-weight: bold;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: auto;
     }
 
     footer {
@@ -105,9 +129,11 @@
       {{ person.name }} - {{ person.age()[0] }} years, {{ person.age()[1] }} months, {{ person.age()[2] }} days old
     </li>
     {% endfor %}
-    <form method="POST" action="/clear">
-      <button type="submit" class="btn">Clear data</button>
-    </form>
+    <center>
+      <form method="POST" action="/clear">
+        <button type="submit">Clear data</button>
+      </form>
+    </center>
   </ul>
   {% endif %}
 
